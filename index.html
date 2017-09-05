@@ -12,29 +12,29 @@
       <div class="container">
         <div class="form-container">
           <div class="form">
-            <select id="firstSelect" onchange="onFirstSelectChange(this.value)">
+            <select id="firstSelect">
               <option id="FRSD" value="RSD">RSD</option>
               <option id="FUSD" value="USD">USD</option>
               <option id="FEUR" value="EUR" selected>EUR</option>
             </select>
-            <input oninput="editFirstInput(this.value)" id="firstInput" type="text" >
+            <input id="firstInput" type="text" >
           </div>
           <div class="error" id="errorFirst"></div>
         </div>
-        <div class="swap" onclick="onSwapClick()"></div>
+        <div id="swap"></div>
         <div class="form-container">
           <div class="form">
-            <select id="secondSelect" onchange="onSecondSelectChange(this.value)">
+            <select id="secondSelect">
               <option id="SRSD" value="RSD" selected>RSD</option>
               <option id="SUSD" value="USD">USD</option>
               <option id="SEUR" value="EUR">EUR</option>
             </select>
-            <input oninput="editSecondInput(this.value)" id="secondInput" type="text" >
+            <input id="secondInput" type="text" >
           </div>
           <div class="error" id="errorSecond"></div>
         </div>
       </div>
-      <div class="reset" onclick="onResetClick()">
+      <div id="reset">
         Reset
       </div>
     </div>

@@ -92,10 +92,10 @@ function fill(data) {
     document.getElementById('secondInput').style.color = 'black';
   }
 }
-
+document.getElementById('firstInput').addEventListener("input", (e) => editFirstInput(e.target.value))
 function editFirstInput(val) {
   if(val === '') {
-    storage.state.firstInput = 1;
+    storage.state.firstInput = '';
     storage.state.secondInput = (1 * storage.state.exchange[storage.state.first + storage.state.second]).toFixed(2);
     storage.state.errorFirst = '';
     storage.state.errorSecond = '';
@@ -120,10 +120,10 @@ function editFirstInput(val) {
     }
   }
 }
-
+document.getElementById('secondInput').addEventListener("input", (e) => editSecondInput(e.target.value))
 function editSecondInput(val) {
   if(val === '') {
-    storage.state.secondInput = 1;
+    storage.state.secondInput = '';
     storage.state.firstInput = (1 / storage.state.exchange[storage.state.first + storage.state.second]).toFixed(2);
     storage.state.errorSecond = '';
     storage.state.errorFirst = '';
@@ -148,10 +148,10 @@ function editSecondInput(val) {
     }
   }
 }
-
+document.getElementById('firstSelect').addEventListener("input", (e) => onFirstSelectChange(e.target.value))
 function onFirstSelectChange(val) {
   storage.state.first = val;
-  if(isNaN(storage.state.firstInput)) {
+  if(isNaN(storage.state.firstInput) || storage.state.firstInput === '') {
     storage.state.secondInput = (1 * storage.state.exchange[storage.state.first + storage.state.second]).toFixed(2);
     fill(storage);
     saveInStorage(storage);
@@ -164,9 +164,10 @@ function onFirstSelectChange(val) {
   }
 }
 
+document.getElementById('secondSelect').addEventListener("input", (e) => onSecondSelectChange(e.target.value))
 function onSecondSelectChange(val) {
   storage.state.second = val;
-  if(isNaN(storage.state.secondInput)) {
+  if(isNaN(storage.state.secondInput) || storage.state.secondInput === '') {
     storage.state.firstInput = (1 / storage.state.exchange[storage.state.first + storage.state.second]).toFixed(2);
     fill(storage);
     saveInStorage(storage);
@@ -178,6 +179,7 @@ function onSecondSelectChange(val) {
     saveInStorage(storage);
   }
 }
+document.getElementById('reset').addEventListener("click", onResetClick)
 
 function onResetClick() {
   storage.state.first = 'EUR';
@@ -190,6 +192,7 @@ function onResetClick() {
   saveInStorage(storage);
 }
 
+document.getElementById('swap').addEventListener("click", onSwapClick)
 function onSwapClick() {
   let first = storage.state.first;
   let second = storage.state.second;
